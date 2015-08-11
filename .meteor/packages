@@ -9,3 +9,6 @@ autopublish
 insecure
 react
 d3js:d3
+momentjs:moment
+twbs:bootstrap
+fortawesome:fontawesome

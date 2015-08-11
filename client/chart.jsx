@@ -3,7 +3,7 @@ Chart = React.createClass({
 
 	getMeteorData() {
 	    return {
-	      data: Data.find({}).fetch()
+	      beers: Beers.find({}).fetch()
 	    }
   	},
 
@@ -17,7 +17,7 @@ Chart = React.createClass({
     render: function() {
         return (
             <svg width={this.props.width} height={this.props.height} >
-              <Bar data={this.data.data} width={this.props.width} height={this.props.height} />
+              <Bar data={this.data.beers} width={this.props.width} height={this.props.height} />
             </svg> 
         );
     }

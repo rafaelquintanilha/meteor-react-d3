@@ -6,39 +6,54 @@ Bar = React.createClass({
 
   render: function() {
     var props = this.props;
-    var data = props.data.map(function(d) {
-      return d.y;
+    var data = [
+      0, 0, 0, 0, 0, 0, 0
+    ];
+
+    props.data.map(function(d) {
+      data[moment(d.date).weekday()] += d.beers;
     });
+
+    console.log(data);
 
     var yScale = d3.scale.linear()
       .domain([0, d3.max(data)])
       .range([0, this.props.height]);
 
     var xScale = d3.scale.ordinal()
-      .domain(d3.range(this.props.data.length))
+      .domain(d3.range(data.length))
       .rangeRoundBands([0, this.props.width], 0.05);
 
     var bars = data.map(function(point, i) {
+      console.log("Index: " + i + "; Value: " + point);
+      
       var height = yScale(point),
           y = props.height - height,
           width = xScale.rangeBand(),
-          x = xScale(i);
+          x = xScale(i);          
 
       return (
-        <rect
-          width={width}
-          height={height} 
-          x={x}
-          y={y}
-          key={i}                   
-        >
-        </rect>
+        <g>
+          <rect
+            fill={"teal"}
+            width={width}
+            height={height} 
+            x={x}
+            y={y}
+            key={i} />
+
+          <text 
+            x={x + width/2 - 5} 
+            y={y+20}>
+            {point}
+          </text>  
+        </g>
       );
 
     });
 
     return (
-          <g>{bars}</g>
+      <g>{bars}</g>
     );
   }
 });
