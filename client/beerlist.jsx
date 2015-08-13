@@ -1,14 +1,7 @@
-BeerList = React.createClass({
-	mixins: [ReactMeteorData],
-
-	getMeteorData() {
-	    return {
-	      beers: Beers.find({}, { sort: {date: -1} }).fetch()
-	    }
-  	},
+BeerList = React.createClass({	
 
   	renderBeers() {		
-		return this.data.beers.map((beer) => {			
+		return this.props.data.map((beer) => {			
 		  return <BeerItem _id={beer._id} beer={beer} />;
 		});
 	},
