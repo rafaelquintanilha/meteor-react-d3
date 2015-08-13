@@ -18,7 +18,7 @@ App = React.createClass({
   			{ qty: 0, xLabel: "Sat" },
   		];
   		this.data.beers.map(function(d) {
-	      data[moment(d.date).weekday()].qty += d.beers;
+	      data[moment(d.date).day()].qty += d.beers;
 	    });
 	    
 	    return data;

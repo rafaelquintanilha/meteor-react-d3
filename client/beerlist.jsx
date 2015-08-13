@@ -2,7 +2,7 @@ BeerList = React.createClass({
 
   	renderBeers() {		
 		return this.props.data.map((beer) => {			
-		  return <BeerItem _id={beer._id} beer={beer} />;
+		  return <BeerItem beer={beer} />;
 		});
 	},
 
