@@ -1,8 +1,8 @@
 BeerForm = React.createClass({
 	handleSubmit: function(e) {
 		e.preventDefault();
-		var numBeers = React.findDOMNode(this.refs.numBeers);
-		var beerDate = React.findDOMNode(this.refs.beerDate);
+		var numBeers = ReactDOM.findDOMNode(this.refs.numBeers);
+		var beerDate = ReactDOM.findDOMNode(this.refs.beerDate);
 		
 		Meteor.call("insertBeer", numBeers.value, moment(beerDate.value).toDate(), function(e, r) {
 			if (e) alert(e.reason)			

@@ -72,7 +72,7 @@ BarChart = React.createClass({
 	},
 
 	componentDidMount: function() {		
-  		var el = this.getDOMNode(); // This is de div we are rendering
+  		var el = ReactDOM.findDOMNode(this); // This is de div we are rendering
   		var svg = d3.select(el)
   				.append("svg")
   				.attr("width", this.props.width)
